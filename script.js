@@ -57,8 +57,12 @@ function renderMuscles(muscle) {
     muscleCheckbox.value = muscle
     muscleDiv.appendChild(muscleCheckbox)
 
-    muscleCheckbox.addEventListener ('input', displayWorkouts) 
-        // console.log('Im working') 
+    muscleCheckbox.addEventListener('input', () => {
+        if (muscleCheckbox.checked) {
+        displayWorkouts(muscle)
+        }
+    })
+    
     
     let muscleLabel = document.createElement('label')
     muscleLabel.for = `${muscle}`
@@ -66,22 +70,13 @@ function renderMuscles(muscle) {
     muscleDiv.appendChild(muscleLabel)
 }
 
-function displayWorkouts() {
-    const workouts =  []
-    const arrayContainer = document.getElementById("list-panel");
-    arrayContainer.innerHTML = "Array Contents: " + workouts.join(", ");
+function displayWorkouts(muscle) {
+        console.log(muscle)
+        const selectedMuscles = [];
+        
+        // Fetch the data using the updated apiUrl and filter the results
+        fetchAllMuscleGroups(muscle)
 }
-
-const renderWorkout = (muscle) => {
-    const listUl = document.getElementById( 'list' )
-    
-    const workoutLi = document.createElement( 'li' )
-    listUl.appendChild( workoutLi)
-    workoutLi.textContent = muscle
-
-    listUl.onclick = ( ) => showWorkoutInfo( book )
-}
-
 
 // for the workout Div
 // function showWorkoutInfo (muscle) {
