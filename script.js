@@ -36,3 +36,305 @@ fetch( apiUrl, {
   .catch(error => {
     console.error('There was a problem fetching the data:', error);
   });
+
+  fetch( apiAbdominals, {
+    method: 'GET',
+    headers: {
+        'content-type': 'application/json',
+        'X-Api-Key': apiKey
+    }
+})
+.then(response => {
+    if (response.ok) {
+      return response.json();
+    }
+    throw new Error('Network response was not ok.');
+  })
+  .then(result => {
+    console.log(result);
+  })
+  .catch(error => {
+    console.error('There was a problem fetching the data:', error);
+  });
+
+  fetch( apiAdductors, {
+    method: 'GET',
+    headers: {
+        'content-type': 'application/json',
+        'X-Api-Key': apiKey
+    }
+})
+.then(response => {
+    if (response.ok) {
+      return response.json();
+    }
+    throw new Error('Network response was not ok.');
+  })
+  .then(result => {
+    console.log(result);
+  })
+  .catch(error => {
+    console.error('There was a problem fetching the data:', error);
+  });
+
+  fetch( apiBiceps, {
+    method: 'GET',
+    headers: {
+        'content-type': 'application/json',
+        'X-Api-Key': apiKey
+    }
+})
+.then(response => {
+    if (response.ok) {
+      return response.json();
+    }
+    throw new Error('Network response was not ok.');
+  })
+  .then(result => {
+    console.log(result);
+  })
+  .catch(error => {
+    console.error('There was a problem fetching the data:', error);
+  });
+
+
+  fetch( apiCalves, {
+    method: 'GET',
+    headers: {
+        'content-type': 'application/json',
+        'X-Api-Key': apiKey
+    }
+})
+.then(response => {
+    if (response.ok) {
+      return response.json();
+    }
+    throw new Error('Network response was not ok.');
+  })
+  .then(result => {
+    console.log(result);
+  })
+  .catch(error => {
+    console.error('There was a problem fetching the data:', error);
+  });
+
+  fetch( apiChest, {
+    method: 'GET',
+    headers: {
+        'content-type': 'application/json',
+        'X-Api-Key': apiKey
+    }
+})
+.then(response => {
+    if (response.ok) {
+      return response.json();
+    }
+    throw new Error('Network response was not ok.');
+  })
+  .then(result => {
+    console.log(result);
+  })
+  .catch(error => {
+    console.error('There was a problem fetching the data:', error);
+  });
+
+  fetch( apiForearms, {
+    method: 'GET',
+    headers: {
+        'content-type': 'application/json',
+        'X-Api-Key': apiKey
+    }
+})
+.then(response => {
+    if (response.ok) {
+      return response.json();
+    }
+    throw new Error('Network response was not ok.');
+  })
+  .then(result => {
+    console.log(result);
+  })
+  .catch(error => {
+    console.error('There was a problem fetching the data:', error);
+  });
+
+  fetch( apiGlutes, {
+    method: 'GET',
+    headers: {
+        'content-type': 'application/json',
+        'X-Api-Key': apiKey
+    }
+})
+.then(response => {
+    if (response.ok) {
+      return response.json();
+    }
+    throw new Error('Network response was not ok.');
+  })
+  .then(result => {
+    console.log(result);
+  })
+  .catch(error => {
+    console.error('There was a problem fetching the data:', error);
+  });
+
+  fetch( apiHamstrings, {
+    method: 'GET',
+    headers: {
+        'content-type': 'application/json',
+        'X-Api-Key': apiKey
+    }
+})
+.then(response => {
+    if (response.ok) {
+      return response.json();
+    }
+    throw new Error('Network response was not ok.');
+  })
+  .then(result => {
+    console.log(result);
+  })
+  .catch(error => {
+    console.error('There was a problem fetching the data:', error);
+  });
+
+  fetch( apiLats, {
+    method: 'GET',
+    headers: {
+        'content-type': 'application/json',
+        'X-Api-Key': apiKey
+    }
+})
+.then(response => {
+    if (response.ok) {
+      return response.json();
+    }
+    throw new Error('Network response was not ok.');
+  })
+  .then(result => {
+    console.log(result);
+  })
+  .catch(error => {
+    console.error('There was a problem fetching the data:', error);
+  });
+
+  fetch( apiLowerBack, {
+    method: 'GET',
+    headers: {
+        'content-type': 'application/json',
+        'X-Api-Key': apiKey
+    }
+})
+.then(response => {
+    if (response.ok) {
+      return response.json();
+    }
+    throw new Error('Network response was not ok.');
+  })
+  .then(result => {
+    console.log(result);
+  })
+  .catch(error => {
+    console.error('There was a problem fetching the data:', error);
+  });
+
+  fetch( apiMiddleBack, {
+    method: 'GET',
+    headers: {
+        'content-type': 'application/json',
+        'X-Api-Key': apiKey
+    }
+})
+.then(response => {
+    if (response.ok) {
+      return response.json();
+    }
+    throw new Error('Network response was not ok.');
+  })
+  .then(result => {
+    console.log(result);
+  })
+  .catch(error => {
+    console.error('There was a problem fetching the data:', error);
+  });
+
+  fetch( apiNeck, {
+    method: 'GET',
+    headers: {
+        'content-type': 'application/json',
+        'X-Api-Key': apiKey
+    }
+})
+.then(response => {
+    if (response.ok) {
+      return response.json();
+    }
+    throw new Error('Network response was not ok.');
+  })
+  .then(result => {
+    console.log(result);
+  })
+  .catch(error => {
+    console.error('There was a problem fetching the data:', error);
+  });
+
+  fetch( apiQuadriceps, {
+    method: 'GET',
+    headers: {
+        'content-type': 'application/json',
+        'X-Api-Key': apiKey
+    }
+})
+.then(response => {
+    if (response.ok) {
+      return response.json();
+    }
+    throw new Error('Network response was not ok.');
+  })
+  .then(result => {
+    console.log(result);
+  })
+  .catch(error => {
+    console.error('There was a problem fetching the data:', error);
+  });
+
+  fetch( apiTraps, {
+    method: 'GET',
+    headers: {
+        'content-type': 'application/json',
+        'X-Api-Key': apiKey
+    }
+})
+.then(response => {
+    if (response.ok) {
+      return response.json();
+    }
+    throw new Error('Network response was not ok.');
+  })
+  .then(result => {
+    console.log(result);
+  })
+  .catch(error => {
+    console.error('There was a problem fetching the data:', error);
+  });
+
+  fetch( apiTriceps, {
+    method: 'GET',
+    headers: {
+        'content-type': 'application/json',
+        'X-Api-Key': apiKey
+    }
+})
+.then(response => {
+    if (response.ok) {
+      return response.json();
+    }
+    throw new Error('Network response was not ok.');
+  })
+  .then(result => {
+    console.log(result);
+  })
+  .catch(error => {
+    console.error('There was a problem fetching the data:', error);
+  });
+
