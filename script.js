@@ -44,34 +44,26 @@ function fetchAllMuscleGroups(muscle) {
 }
 
 function renderMuscles(muscle) {
-  // create checkboxes for muscles
+  // create image for muscles
 
-  let muscleCheckbox = document.createElement('input');
-  muscleCheckbox.type = 'checkbox';
-  muscleCheckbox.className = `${muscle} muscles-helper`;
-  muscleCheckbox.id = muscle;
-  muscleCheckbox.value = muscle;
-  muscleDiv.appendChild(muscleCheckbox);
+  let muscleImage = document.createElement('input');
+  muscleImage.type = 'image';
+  muscleImage.className = `${muscle} muscles-helper`;
+  muscleImage.id = muscle;
+  muscleImage.value = muscle;
+  muscleDiv.appendChild(muscleImage);
 
-  muscleCheckbox.addEventListener('change', function () {
-    // Uncheck all other checkboxes
-    let checkboxes = document.getElementsByClassName('muscles-helper');
+  muscleImage.addEventListener('change', function () {
+    // Uncheck all other images
+    let clickImages = document.getElementsByClassName('muscles-helper');
     for (let i = 0; i < checkboxes.length; i++) {
-      let checkbox = checkboxes[i];
-      if (checkbox !== muscleCheckbox) {
-        checkbox.checked = false;
+      let clickImage = clickImages[i];
+      if (clickImage !== muscleImage) {
+        clickImage.checked = false;
       }
     }
-  
-
-    // if box is unchecked
-    let contentDiv = document.getElementById('list-panel');
-    if (!muscleCheckbox.checked) {
-      //hide workout array
-      contentDiv.style.display = 'none';
-    } else {
-      displayWorkouts();
-    }
+    displayToggleWorkouts
+    
   });
 
 
@@ -81,29 +73,22 @@ function renderMuscles(muscle) {
   muscleDiv.appendChild(muscleLabel);
 }
 
+
+function displayToggleWorkouts() {
+  let contentDiv = document.getElementById('list-panel');
+  if (contentDiv.display === 'none') {
+    //hide workout array
+    contentDiv.style.display = 'block';
+  } else {
+    //show workout array
+    contentDiv.style.display = 'none';
+  }}
+  
 function displayWorkouts() {
 
-  // // Check if any checkboxes are checked
-  // let checkboxes = document.getElementsByClassName('muscles-helper');
-  // let isChecked = false;
-  // for (let i = 0; i < checkboxes.length; i++) {
-  //   if (checkboxes[i].checked) {
-  //     isChecked = true;
-  //     break;
-  //   }
-  // }
-
-  // // If no checkboxes are checked, clear the workout array and return
-  // if (!isChecked) {
-  //   workouts = [];
-  //   document.getElementById('list-panel').innerHTML = '';
-  //   return;
-  // }
-
-  // // Otherwise, proceed with fetching and rendering the appropriate workouts
-  const selectedMuscles = Array.from(checkboxes)
-    .filter(checkbox => checkbox.checked)
-    .map(checkbox => checkbox.value);
+  const selectedMuscles = Array.from(muscleImages)
+    .filter(muscleImage => muscleImage.checked)
+    .map(muscleImage => muscleImage.value);
 
   const muscleUrl = apiUrl + `${selectedMuscles.join(',')}`;
   fetch(muscleUrl, {
