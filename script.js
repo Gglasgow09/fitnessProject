@@ -44,16 +44,22 @@ function fetchAllMuscleGroups(muscle) {
 }
 
 function renderMuscles(muscle) {
+  
   // create image for muscles
-
-  let muscleImage = document.createElement('input');
-  muscleImage.type = 'image';
-  muscleImage.className = `${muscle} muscles-helper`;
-  muscleImage.id = muscle;
-  muscleImage.value = muscle;
+  let muscleImage = document.createElement('img');
+  muscleImage.src = muscle.url;
+  muscleImage.className = `${muscle.name} muscles-helper`;
+  muscleImage.alt = muscle.name;
   muscleDiv.appendChild(muscleImage);
 
-  muscleImage.addEventListener('change', function () {
+  
+
+
+  //set size of images
+  muscleImage.style.width = '100px'
+  muscleImage.style.height = '100px'
+  
+  muscleImage.addEventListener('click', function () {
     // Uncheck all other images
     let clickImages = document.getElementsByClassName('muscles-helper');
     for (let i = 0; i < checkboxes.length; i++) {
@@ -62,14 +68,12 @@ function renderMuscles(muscle) {
         clickImage.checked = false;
       }
     }
-    displayToggleWorkouts
-    
+    displayWorkouts();
   });
 
-
   let muscleLabel = document.createElement('label');
-  muscleLabel.for = `${muscle}`;
-  muscleLabel.textContent = muscle;
+  muscleLabel.for = `${muscle.name}`;
+  muscleLabel.textContent = muscle.name.charAt(0).toUpperCase() + muscle.name.slice(1);
   muscleDiv.appendChild(muscleLabel);
 }
 
@@ -86,9 +90,9 @@ function displayToggleWorkouts() {
   
 function displayWorkouts() {
 
-  const selectedMuscles = Array.from(muscleImages)
-    .filter(muscleImage => muscleImage.checked)
-    .map(muscleImage => muscleImage.value);
+  const selectedMuscles = Array.from(document.getElementsByClassName('muscles-helper'))
+  .filter(muscleImage => muscleImage.checked)
+  .map(muscleImage => muscleImage.getAttribute('list-panel'));
 
   const muscleUrl = apiUrl + `${selectedMuscles.join(',')}`;
   fetch(muscleUrl, {
@@ -110,6 +114,8 @@ function displayWorkouts() {
     .catch(error => {
       console.error('There was a problem fetching the data:', error);
     });
+
+    displayToggleWorkouts()
 }
 
 
@@ -143,6 +149,8 @@ function renderWorkouts(workouts) {
     });
   })
 }
+
+
 // for the workout Div
 // function showWorkoutInfo (muscle) {
   //         //get the array to show up so we can append to the li

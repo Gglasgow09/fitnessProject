@@ -13,7 +13,7 @@ html.dark {
     --secondary-color: #333;
 }
 html.dark {
-    background-color: #111;
+    background-color: #111111a9;
     color: var(--primary-color);
 }
 body {
@@ -38,3 +38,11 @@ body {
 .toggle:focus {
     outline: none;
 }
+
+.muscles-helper {
+    margin-right: 25px;
+    margin-left: 25px;
+    margin-top: 25px;
+    margin-bottom: 25px;
+  }
+
