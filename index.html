@@ -14,7 +14,7 @@
     <div>
     <h1>Muscles</h1>
     <div id = 'muscleGroupDiv' class="muscles"> <button id ='toggle'class="toggle">Dark mode</button>
-        </div>
+    </div>
         <!-- list of workouts -->
         <div id="list-panel">
             <ul id="list"></ul>
@@ -22,16 +22,24 @@
         <!-- Workout Details -->
         <div id="workout-details">
             <!-- <img id = 'detail-image' class="detail-image" src="./assets/image-placeholder.jpg" alt="Insert Name Here" /> -->
-            <h2 id= 'workout-name' class="name">Insert Name Here</h2>
-            <h3 id = 'type' >Insert Type Here</h3>
-            <h3 id = 'muscle' >Insert Muscle Group Here</h3>
-            <h3 id = 'equipment' >Insert Equipment Here</h3>
-            <h3 id = 'difficulty' >Insert Difficulty Here</h3>
-            <h3 id = 'instructions' >Insert Instructions Here</h3>
+            <h2 id= 'workout-name' class="name"></h2>
+            <h3 id = 'type' ></h3>
+            <h3 id = 'muscle' ></h3>
+            <h3 id = 'equipment' ></h3>
+            <h3 id = 'difficulty' ></h3>
+            <h3 id = 'instructions' ></h3>
         </div>
+        <!-- new workout form -->
         <form id="workoutform">
-            <h4>Add Workout</h4>
-        </form>
+            <h4>Add Your Own  Workout</h4>
+            <label for="'name"> Workout Name: </label>
+            <input type="text" name="name" id="new-workout-name" />
+            <label for="type">Type: </label>
+            <input type="text" name="type" id="new-type" />
+            <label for="instructions"> Instructions: </label>
+            <input type="text" name="instructions" id="new-instruction" />
+            
+    </form>
         <form id="workoutlist">
             <h4>My Workouts</h4>
         </form>

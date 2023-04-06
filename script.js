@@ -50,6 +50,7 @@ function renderMuscles(muscle) {
   muscleImage.src = muscle.url;
   muscleImage.className = `${muscle.name} muscles-helper`;
   muscleImage.alt = muscle.name;
+  muscleImage.setAttribute('list-panel', muscle.name);
   muscleDiv.appendChild(muscleImage);
 
   
@@ -59,22 +60,32 @@ function renderMuscles(muscle) {
   muscleImage.style.width = '100px'
   muscleImage.style.height = '100px'
   
+  //event listener for when image is clicked
   muscleImage.addEventListener('click', function () {
     // Uncheck all other images
     let clickImages = document.getElementsByClassName('muscles-helper');
-    for (let i = 0; i < checkboxes.length; i++) {
+    for (let i = 0; i < clickImages.length; i++) {
       let clickImage = clickImages[i];
       if (clickImage !== muscleImage) {
         clickImage.checked = false;
       }
     }
-    displayWorkouts();
+
+    //check selected image
+    muscleImage.checked = true;
+
+    displayWorkouts(muscle);
   });
+
+  
+  
 
   let muscleLabel = document.createElement('label');
   muscleLabel.for = `${muscle.name}`;
   muscleLabel.textContent = muscle.name.charAt(0).toUpperCase() + muscle.name.slice(1);
-  muscleDiv.appendChild(muscleLabel);
+  muscleDiv.appendChild(muscleLabel)
+
+  
 }
 
 
@@ -114,8 +125,8 @@ function displayWorkouts() {
     .catch(error => {
       console.error('There was a problem fetching the data:', error);
     });
-
-    displayToggleWorkouts()
+    
+    
 }
 
 
@@ -141,9 +152,9 @@ function renderWorkouts(workouts) {
     
     workoutCheckbox.addEventListener('change', function () {
       if (workoutCheckbox.checked) {
-        displayWorkoutInfo(workout.id);
+        showWorkoutInfo(workout.id);
       } else {
-        const workoutInfoDiv = document.getElementById('workout-info');
+        const workoutInfoDiv = document.getElementById('workout-details');
         workoutInfoDiv.innerHTML = '';
       }
     });
@@ -151,44 +162,37 @@ function renderWorkouts(workouts) {
 }
 
 
-// for the workout Div
-// function showWorkoutInfo (muscle) {
-  //         //get the array to show up so we can append to the li
-  // }
+// shows workout information
+function showWorkoutInfo(muscle) {
+  const workoutInfoDiv = document.getElementById('workout-details');
 
-  
-  // function displayWorkoutInfo(muscle) {
-  //   const workoutId = muscle.target.value;
-  
-  //   // Get the workout from the workouts array using its ID
-  //   const workout = workouts.find((workout) => workout.id === workoutId);
-  
-  //   // Get the workout details from the API using the workout's name
-  //   fetch(muscleUrl, {
-  //     method: 'GET',
-  //     headers: {
-  //       'content-type': 'application/json',
-  //       'X-Api-Key': apiKey
-  //     },
-  //   })
-  //     .then((response) => response.json())
-  //     .then(result => {
-  //       // Update the workout details on the page
-  //       const detailImage = document.getElementById("detail-image");
-  //       // detailImage.src = workout.image;
-  //       //
-  //       const workoutName = document.getElementById("workout-name");
-  //       workoutName.innerText = workout.name;
-  //       const workoutType = document.getElementById("type");
-  //       workoutType.innerText = workout.type;
-  //       const workoutMuscle = document.getElementById("muscle");
-  //       workoutMuscle.innerText = workout.muscle;
-  //       const workoutEquipment = document.getElementById("equipment");
-  //       workoutEquipment.innerText = workout.equipment;
-  //       const workoutDifficulty = document.getElementById("difficulty");
-  //       workoutDifficulty.innerText = workout.difficulty;
-  //       const workoutInstructions = document.getElementById("instructions");
-  //       workoutInstructions.innerText = workout.instructions;
-  //     })
-  //     .catch((error) => console.error(error));
-  // }
+  const workoutUrl = apiUrl + muscle;
+  fetch(workoutUrl, {
+    method: 'GET',
+    headers: {
+      'content-type': 'application/json',
+      'X-Api-Key': apiKey
+    }
+  })
+    .then(response => {
+      if (response.ok) {
+        return response.json();
+      }
+      throw new Error('Network response was not ok.');
+    })
+    .then(result => {
+      // update workout info in the DOM
+      workoutInfoDiv.innerHTML = `
+        <img id='detail-image' class='detail-image' src='${result.image}' alt='${result.name}' />
+        <h2 id='workout-name' class='name'>${result.name}</h2>
+        <h3 id='type'>Type: ${result.category?.name}</h3>
+        <h3 id='muscle'>Muscle Group: ${result.muscles?.map(muscle => muscle.name).join(', ')}</h3>
+        <h3 id='equipment'>Equipment: ${result.equipment?.map(equipment => equipment.name).join(', ')}</h3>
+        <h3 id='difficulty'>Difficulty: ${result.difficulty}</h3>
+        <h3 id='instructions'>Instructions: ${result.description}</h3>
+      `;
+    })
+    .catch(error => {
+      console.error('There was a problem fetching the data:', error);
+    });
+}
