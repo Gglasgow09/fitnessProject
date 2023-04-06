@@ -2,6 +2,8 @@ const apiUrl = `https://api.api-ninjas.com/v1/exercises?muscle=`
 const workouts =  []
 const muscleDiv = document.getElementById('muscleGroupDiv')
 const toggle = document.getElementById('toggle');
+const workoutId = document.getElementById('workout-details.name')
+
 
 //light and dark mode
 toggle.addEventListener('click', (e) => {
@@ -99,6 +101,7 @@ function displayToggleWorkouts() {
     contentDiv.style.display = 'none';
   }}
   
+  
 function displayWorkouts() {
 
   const selectedMuscles = Array.from(document.getElementsByClassName('muscles-helper'))
@@ -159,14 +162,14 @@ function renderWorkouts(workouts) {
       }
     });
   })
+  
 }
 
 
 // shows workout information
-function showWorkoutInfo(muscle) {
-  const workoutInfoDiv = document.getElementById('workout-details');
+function showWorkoutInfo(workoutId) {
 
-  const workoutUrl = apiUrl + muscle;
+  const workoutUrl = apiUrl + workoutId;
   fetch(workoutUrl, {
     method: 'GET',
     headers: {
@@ -181,18 +184,36 @@ function showWorkoutInfo(muscle) {
       throw new Error('Network response was not ok.');
     })
     .then(result => {
-      // update workout info in the DOM
-      workoutInfoDiv.innerHTML = `
-        <img id='detail-image' class='detail-image' src='${result.image}' alt='${result.name}' />
-        <h2 id='workout-name' class='name'>${result.name}</h2>
-        <h3 id='type'>Type: ${result.category?.name}</h3>
-        <h3 id='muscle'>Muscle Group: ${result.muscles?.map(muscle => muscle.name).join(', ')}</h3>
-        <h3 id='equipment'>Equipment: ${result.equipment?.map(equipment => equipment.name).join(', ')}</h3>
-        <h3 id='difficulty'>Difficulty: ${result.difficulty}</h3>
-        <h3 id='instructions'>Instructions: ${result.description}</h3>
-      `;
+      showSpecificWorkout(result)
     })
     .catch(error => {
       console.error('There was a problem fetching the data:', error);
     });
+  }
+  
+function showSpecificWorkout(workout) {
+  
+  const workoutName = document.getElementById("workout-name");
+  workoutName.innerText = workout.name;
+  const workoutType = document.getElementById("type");
+  workoutType.innerText = workout.type;
+  const workoutMuscle = document.getElementById("muscle");
+  workoutMuscle.innerText = workout.muscle;
+  const workoutEquipment = document.getElementById("equipment");
+  workoutEquipment.innerText = workout.equipment;
+  const workoutDifficulty = document.getElementById("difficulty");
+  workoutDifficulty.innerText = workout.difficulty;
+  const workoutInstructions = document.getElementById("instructions");
+  workoutInstructions.innerText = workout.instructions;
+  
 }
+// update workout info in the DOM
+// workoutInfoDiv.innerHTML = `
+//   <img id='detail-image' class='detail-image' src='${result.image}' alt='${result.name}' />
+//   <h2 id='workout-name' class='name'>${result.name}</h2>
+//   <h3 id='type'>Type: ${result.category?.name}</h3>
+//   <h3 id='muscle'>Muscle Group: ${result.muscles?.map(muscle => muscle.name).join(', ')}</h3>
+//   <h3 id='equipment'>Equipment: ${result.equipment?.map(equipment => equipment.name).join(', ')}</h3>
+//   <h3 id='difficulty'>Difficulty: ${result.difficulty}</h3>
+//   <h3 id='instructions'>Instructions: ${result.description}</h3>
+// `;
