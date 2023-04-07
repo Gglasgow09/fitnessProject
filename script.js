@@ -129,32 +129,43 @@ function displayWorkouts() {
 }
 
 function renderWorkouts(workouts) {
-  const listUl = document.getElementById('list')
-  listUl.innerHTML = ''
+  const listUl = document.getElementById('list');
+  listUl.innerHTML = '';
+  const checkboxes = [];
+
   workouts.forEach((workout) => {
-    const workoutLi = document.createElement('li')
+    const workoutLi = document.createElement('li');
     const workoutCheckbox = document.createElement('input');
     workoutCheckbox.type = 'checkbox';
-    workoutCheckbox.className = `workout-helper`;
+    workoutCheckbox.className = 'workout-helper';
     workoutCheckbox.id = workout.id;
     workoutCheckbox.value = workout.id;
+    checkboxes.push(workoutCheckbox);
     workoutLi.appendChild(workoutCheckbox);
+
     const workoutLabel = document.createElement('label');
-    workoutLabel.for = `${workout.id}`;
+    workoutLabel.for = workout.id;
     workoutLabel.textContent = workout.name;
     workoutLi.appendChild(workoutLabel);
-    //appends to workout list
+
     listUl.appendChild(workoutLi);
+
     workoutCheckbox.addEventListener('change', function () {
       if (workoutCheckbox.checked) {
+        checkboxes.forEach(function (otherCheckbox) {
+          if (otherCheckbox !== workoutCheckbox) {
+            otherCheckbox.checked = false;
+          }
+        });
         showSpecificWorkout(workout);
       } else {
-        workoutInfoDiv.hidden = true
+        workoutInfoDiv.hidden = true;
         //workoutInfoDiv.innerHTML = '';
       }
     });
-  })
+  });
 }
+
 
 // // shows workout information
 function showWorkoutInfo(workoutCheckbox) {
@@ -211,7 +222,7 @@ newWorkoutForm.onsubmit = ( event ) => {
   }
 
   //add new workout to workout list
-  myWorkoutList.appendChild(newWorkout)
+  myWorkoutList.parentNode.appendChild(newWorkout)
 
   newWorkoutForm.reset()
 }

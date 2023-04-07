@@ -118,3 +118,9 @@ body::-webkit-scrollbar-thumb {
     justify-content: center;
     align-items: center;
 }
+
+#workout-details h2,
+#workout-details h3 {
+    font-weight: normal;
+    font-family: Arial, sans-serif;
+}

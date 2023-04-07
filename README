@@ -1,25 +1,30 @@
 Our project will be to create a fitness resource:
 Our website will have photos of certain muscle groups. 
-When these photos are clicked on, it will present a dropdown of more detailed 
-muscle groups 
-(for example, one muscle group might be legs, and when the photo is clicked,
- it will show glutes, hamstrings, quads, etc). We want this 
- to work similarly to the ramen rater lab.
-After the dropdown is shown, users can then click on the specific 
-muscles they would like to target. This will reveal exercises for that target muscle, 
-where we hope to have a wide variety of options.
-Once the exercises are shown, users will be able to do two things:
-They can click on a “like” button that will be next to the exercise. 
-This will import that exercise to a “favorites” list, where they can 
+When these photos are clicked on, it will present a list of workouts for the muscle assigned to that photo.
+
+
+After the workouts is shown, users can then click on a checkbox next to specific 
+workouts. This will reveal information and properties for that target workout.
+
+^^ Above is our MVP, with our goal being the basic functionality of:
+1. Rendering Images
+2. Making those images interactable
+3. Causing that interaction to fetch a list of exercises
+4. Rendering checkboxes next to these exercises and allowing the user to interact with those as well
+5. Setting the checkbox to pull up that workout's information when clicked 
+
+With this, the website will, at minimum, provide a variety of possible exercises for the user to take note of. 
+
+
+Once the exercises are shown, users will be able to click on a “like” button that will be next to the exercise. 
+This will import that exercise to a “My Workouts” list, where they can 
 save workouts that they’d like to use.
-They can also achieve this by dragging the workout into the favorites section.
+
 Along with the workouts that we provide, there will also be an option 
 for the user to input a workout that has not been listed. This will let 
 them have more control over customization, so that they can create their 
 own personalized workout that can include any workout they’d like to do.
-Each workout will have a small comment (or suggestion) where we may 
-recommend certain approaches (some workouts may be better with high weight 
-& low volume, and vice versa).
+
 Users will also be able to choose between a light and dark mode when viewing 
 the website.
 
