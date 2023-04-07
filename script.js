@@ -210,22 +210,24 @@ function showSpecificWorkout(workout) {
   workoutInstructions.innerText = 'Instructions' + ':' + workout.instructions.charAt(0).toUpperCase() + workout.instructions.slice(1);
 }
 
+
+
 const newWorkoutForm = document.getElementById('workout-form');
 
 newWorkoutForm.onsubmit = (event) => {
-  console.log('i am clicked')
+  
   event.preventDefault();
 
   const newWorkout = {
-    'name': newWorkoutForm.name,
-    'type': newWorkoutForm.type,
-    'instructions': newWorkoutForm.instructions
+    'name': newWorkoutForm['workout-form-name'].value,
+    'type': newWorkoutForm['filter-type'].value,
+    'instructions': newWorkoutForm['workout-form-instruction'].value
   }
 
   let newWorkoutDiv = document.createElement('div');
 
   let newWorkoutName = document.createElement('h2');
-  newWorkoutName.innerHTML = newWorkout.name.value;
+  newWorkoutName.innerHTML = newWorkout.name;
   newWorkoutDiv.appendChild(newWorkoutName);
 
   let newWorkoutType = document.createElement('p');
@@ -233,10 +235,8 @@ newWorkoutForm.onsubmit = (event) => {
   newWorkoutDiv.appendChild(newWorkoutType);
 
   let newWorkoutInstructions = document.createElement('p');
-  newWorkoutInstructions.innerHTML = newWorkout.instructions.value;
+  newWorkoutInstructions.innerHTML = newWorkout.instructions;
   newWorkoutDiv.appendChild(newWorkoutInstructions);
-
-  
 
   //add new workout to workout list
   myWorkoutList.appendChild(newWorkoutDiv);
@@ -244,3 +244,5 @@ newWorkoutForm.onsubmit = (event) => {
 
   newWorkoutForm.reset();
 }
+
+
