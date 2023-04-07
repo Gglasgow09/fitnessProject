@@ -210,19 +210,37 @@ function showSpecificWorkout(workout) {
   workoutInstructions.innerText = 'Instructions' + ':' + workout.instructions.charAt(0).toUpperCase() + workout.instructions.slice(1);
 }
 
-// create new workout after submitting form
-const newWorkoutForm = document.getElementById('submit-form')
-newWorkoutForm.onsubmit = ( event ) => {
-  event.preventDefault()
+const newWorkoutForm = document.getElementById('workout-form');
+
+newWorkoutForm.onsubmit = (event) => {
+  console.log('i am clicked')
+  event.preventDefault();
 
   const newWorkout = {
-    'name' : newWorkoutForm.name.value,
-    'type' : newWorkoutForm.type.value,
-    'instructions' : newWorkoutForm.instructions.value
+    'name': newWorkoutForm.name,
+    'type': newWorkoutForm.type,
+    'instructions': newWorkoutForm.instructions
   }
 
-  //add new workout to workout list
-  myWorkoutList.parentNode.appendChild(newWorkout)
+  let newWorkoutDiv = document.createElement('div');
 
-  newWorkoutForm.reset()
+  let newWorkoutName = document.createElement('h2');
+  newWorkoutName.innerHTML = newWorkout.name.value;
+  newWorkoutDiv.appendChild(newWorkoutName);
+
+  let newWorkoutType = document.createElement('p');
+  newWorkoutType.innerHTML = newWorkout.type;
+  newWorkoutDiv.appendChild(newWorkoutType);
+
+  let newWorkoutInstructions = document.createElement('p');
+  newWorkoutInstructions.innerHTML = newWorkout.instructions.value;
+  newWorkoutDiv.appendChild(newWorkoutInstructions);
+
+  
+
+  //add new workout to workout list
+  myWorkoutList.appendChild(newWorkoutDiv);
+  document.body.appendChild(myWorkoutList)
+
+  newWorkoutForm.reset();
 }
