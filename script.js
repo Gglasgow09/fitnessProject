@@ -3,6 +3,7 @@ const workouts = []
 const muscleDiv = document.getElementById('muscleGroupDiv')
 const toggle = document.getElementById('toggle');
 const workoutInfoDiv = document.getElementById('workout-details');
+const myWorkoutList = document.getElementById('workout-list')
 
 //light and dark mode
 toggle.addEventListener('click', (e) => {
@@ -159,7 +160,7 @@ function renderWorkouts(workouts) {
 function showWorkoutInfo(workoutCheckbox) {
   const workoutId = workoutCheckbox.muscle
   const workoutUrl = apiUrl + workoutId;
-  console.log(workoutUrl)
+  
   fetch(workoutUrl, {
     method: 'GET',
     headers: {
@@ -198,68 +199,19 @@ function showSpecificWorkout(workout) {
   workoutInstructions.innerText = 'Instructions' + ':' + workout.instructions.charAt(0).toUpperCase() + workout.instructions.slice(1);
 }
 
-// const newWorkout = document.getElementById('workout-list')
-// const filterWorkout = document.querySelector("#filter-type")
+// create new workout after submitting form
+const newWorkoutForm = document.getElementById('submit-form')
+newWorkoutForm.onsubmit = ( event ) => {
+  event.preventDefault()
 
-// const handleDB = () => {
-//   fetch("http://localhost:3000/exercises/")
-//   .then(res => res.json())
-//   .then(data => {
-//     newWorkout.innerHTML = ""
-//   data.sort((a,b) => b.likes - a.likes)
-//   data.forEach(element => renderData(element))
-//   filterJokes.onchange = (e) => {
-//       if (e.target.value === "") {
-//           divJokes.innerHTML = ""
-//           data.forEach(el => renderData(el))
-//       } else {
-//           divJokes.innerHTML = ""
-//           data.filter(item => item.category === e.target.value).forEach(item => {renderData(item)})
-//       }
-//   }
-//   })
-// }
-// // creates a delete button
+  const newWorkout = {
+    'name' : newWorkoutForm.name.value,
+    'type' : newWorkoutForm.type.value,
+    'instructions' : newWorkoutForm.instructions.value
+  }
 
-// const deleteBtn = document.createElement('button')
-//     deleteBtn.className = "deleteBtn"
-//     deleteBtn.innerText = "Delete"
-//     deleteBtn.addEventListener('click', () => {
-//         fetch(`http://localhost:3000/exercises/${element.id}`, {method: "DELETE"})
-//         .then(res => res.json())
-//         .then(data =>{ divJokesContent.remove()
-//         handleDB()
-//         })
-//     })
+  //add new workout to workout list
+  myWorkoutList.appendChild(newWorkout)
 
-
-// //submit form
-// const submitWorkoutForm = document.getElementById('workout-form')
-
-// submitWorkoutForm.addEventListener('submit', (e) => {
-//   e.preventDefault()
-//   const selectName = document.getElementById('workout-form-name')
-//   // const selectType = document.getElementById('workout-form-type')
-//   // const selectInstructions = document.getElementById('workout-form-instruction')
-//   if (selectName.value === "") {
-//     alert("Please select a Name")
-// } else {
-//     const newSubmitObj = {
-//         jokes: e.target.name.value,
-//         category: selectName.value,
-//         likes: '0'
-//     }
-//     fetch('http://localhost:3000/exercises/', {
-//     method: "POST",
-//     headers: {
-//     'Content-type':'application/json',
-//         },
-//     body:JSON.stringify(newSubmitObj)
-//     })
-//     .then(res => res.json())
-//     .then(data => handleDB())
-//     submitWorkoutForm.reset()
-// }  
-// })
-
-
+  newWorkoutForm.reset()
+}
