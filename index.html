@@ -11,43 +11,67 @@
     <title>Gain Train</title>
 </head>
 <body>
-    <div>
-    <h1>Muscles</h1>
-    <div id = 'muscleGroupDiv' class="muscles"> <button id ='toggle'class="toggle">Dark mode</button>
+    <div id="toggle-container">
+        <button id ='toggle'class="toggle">Dark mode</button>
     </div>
-        <!-- list of workouts -->
-        <div id="list-panel">
-            <ul id="list"></ul>
-        </div>
+
+    <div id ='title-container'>
+        <h1 id="title-text">Gains Train</h1>
+    </div>
+
+    <div id="muscle-container">
+        <div id="muscle-label"></div>
+        <div id = 'muscleGroupDiv' class="muscles"> </div>
+    </div>
+
+<!-- list of workouts -->
+    <div id="list-panel">
+        <ul id="list"></ul>
+    </div>
         <!-- Workout Details -->
         <div id="workout-details">
             <!-- <img id = 'detail-image' class="detail-image" src="./assets/image-placeholder.jpg" alt="Insert Name Here" /> -->
-            <h2 id= 'workout-name' class="name"></h2>
-            <h3 id = 'type' ></h3>
-            <h3 id = 'muscle' ></h3>
-            <h3 id = 'equipment' ></h3>
-            <h3 id = 'difficulty' ></h3>
-            <h3 id = 'instructions' ></h3>
+                <h2 id= 'workout-name' class="name"></h2>
+                <h3 id = 'type' ></h3>
+                <h3 id = 'muscle' ></h3>
+                <h3 id = 'equipment' ></h3>
+                <h3 id = 'difficulty' ></h3>
+                <h3 id = 'instructions' ></h3>
         </div>
+
         <!-- new workout form -->
-        <form id="workoutform">
-            <h4>Add Your Own  Workout</h4>
-            <label for="'name"> Workout Name: </label>
-            <input type="text" name="name" id="new-workout-name" />
-            <label for="type">Type: </label>
-            <input type="text" name="type" id="new-type" />
-            <label for="instructions"> Instructions: </label>
-            <input type="text" name="instructions" id="new-instruction" />
-            
-    </form>
-        <form id="workoutlist">
-            <h4>My Workouts</h4>
-        </form>
-        <!-- reference for form
-        <div id="list">
-            <h2>Different Workouts:</h2>
-            <ul id="tasks">
-            </ul>
-            </div> -->
+        <div class="submit-form">
+                <p>
+                    <h2>Submit Your Own Workout</h2>
+                    <form id="workout-form">
+                        <label for="'name" id="name-select"> Workout Name: </label>
+                        <input type="text" name="name" id="workout-form-name" /><br>
+                        <label for="type" id="type-select">Type: </label>
+                        <select name="Type" id = 'filter-type'>
+                                <option value="">Please choose a Type</option>
+                                <option value="cardio">Cardio</option>
+                                <option value="olympic_weightlifting">Olympic Weightlifting</option>
+                                <option value="plyometrics">Plyometrics</option>
+                                <option value="powerlifting">Powerlifting</option>
+                                <option value="strength">Strength</option>
+                                <option value="stretching">Stretching</option>
+                                <option value="strongman">Strongman</option>
+                        </select>
+                        <br>
+                        <label for="instructions" id="instructions-select"> Instructions: </label>
+                        <input type="text" name="instructions" id="workout-form-instruction" /><br>
+                        <input class='input-submit' type="submit" value="Submit">
+                    </form>
+                </p>
+        </div>
+
+        <div>
+            <div id="workout-list">
+                <h2>Workout List</h2>
+                <p>
+                    <form id="list-of-workouts"></form>
+                </p>
+            </div>
+        </div>
 </body>
 </html>

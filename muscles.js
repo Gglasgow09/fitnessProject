@@ -1,12 +1,12 @@
 const muscleGroups = [
     {
       name :'abdominals', 
-      url : 'https://caliberstrong.com/wp-content/uploads/2020/04/abdominal-muscles-diagram.jpg',
+      url : 'https://images.squarespace-cdn.com/content/v1/5820c3b020099e9ace69f392/1488909342249-R3MJYYTXPBFKYSH3EAXC/core_abdominals.jpg?format=1000w',
       display : 'Abdominal '
     },
     {
       name :'abductors', 
-      url : 'https://www.intowellness.in/wp-content/uploads/2019/09/Why-Exercising-Your-Hip-Abductors-is-Important.jpg',
+      url : 'https://chunkfitness.com/sites/default/files/seated-hip-abductions-machine.jpg',
       display : 'Abductors'
     },
     {

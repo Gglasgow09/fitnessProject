@@ -1,56 +1,11 @@
-{
-    box-sizing: border-box;
-    font-family: Arial, Helvetica, sans-serif;
-}
-:root {
-    --primary-color: #000000;
-    --secondary-color: #FFFFFF;
-}
-html {
-    transition: all 0.5s ease-in;
-}
-html.dark {
-    --primary-color: #fff;
-    --secondary-color: #333;
-}
-html.dark {
-    background-color: #111111e5;
-    color: var(--primary-color);
-}
-body {
-    font-family: 'Heebo', sans-serif;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    height: 100vh;
-    overflow: hidden;
+* {
     margin: 0;
+    font-family: Arial, Helvetica, sans-serif;
+    box-sizing: border-box;
+    margin: 7px;
+    justify-content: space-between;
 }
-.toggle {
-    cursor: pointer;
-    background-color: var(--primary-color);
-    color: var(--secondary-color);
-    border: 0;
-    border-radius: 4px;
-    padding: 8px 12px;
-    position: absolute;
-    top: 100px;
-}
-.toggle:focus {
-    outline: none;
-}
-.muscles-helper {
-    margin-right: 25px;
-    margin-left: 25px;
-    margin-top: 25px;
-    margin-bottom: 25px;
-}
-#muscleGroupDiv {
-    display: flex;
-    overflow-x: auto;
-    margin: 1rem 0;
-    max-width: calc(100vw - 2rem);
-}
+
 body {
     padding: 1rem;
     text-align: center;
@@ -59,12 +14,107 @@ body {
     justify-content: center;
     align-items: center;
 }
-#title-container {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
+:root {
+    --primary-color: #000;
+    --secondary-color: #fff;
 }
+
+html {
+    transition: all 0.5s ease-in;
+}
+
+html.dark {
+    --primary-color: #fff;
+    --secondary-color: #333;
+}
+
+html.dark {
+    background-color: #111;
+    color: var(--primary-color);
+}
+
+#toggle {
+    cursor: pointer;
+    background-color: var(--primary-color);
+    color: var(--secondary-color);
+    border: 0;
+    border-radius: 4px;
+    padding: 8px 12px;
+    /* position: absolute; */
+    top: 100px; 
+}
+
+.toggle:focus {
+    outline: none;
+}
+
+
+#muscleGroupDiv {
+    display: flex;
+    overflow-x: auto;
+    margin: 1rem 0;
+    max-width: calc(100vw - 2rem);
+    
+}
+
+#muscleGroupDiv img {
+    flex: 0 1 auto;
+    height: 150px;
+    margin-right: 0.5rem;
+    cursor: pointer;
+}
+/* #workoutform {
+    column-count: 3;
+} */
+
 ul {
     list-style-type: none;
     padding-left: 0;
-  }
+}
+
+body::-webkit-scrollbar {
+    width: .4em;
+}
+
+body::-webkit-scrollbar-track {
+    background: gray;
+}
+
+body::-webkit-scrollbar-thumb {
+    background-color: rgb(1, 38, 73);
+}
+
+.muscles::-webkit-scrollbar {
+    width: .1em;
+    height: .4em;
+}
+
+.muscles::-webkit-scrollbar-track {
+    background: gray;
+}
+
+.muscles::-webkit-scrollbar-thumb {
+    background-color: rgb(1, 38, 73);
+}
+
+
+.submit-form {
+    margin: auto;
+    margin-top: 20px;
+    border: 5px solid rgb(1, 38, 73);
+    width: 700px;
+    display: grid;
+    grid-template-rows: 50px 1fr;
+    justify-content: center;
+    align-items: center;
+}
+#workout-list {
+    margin: auto;
+    margin-top: 20px;
+    border: 5px solid rgb(1, 38, 73);
+    width: 700px;
+    display: grid;
+    grid-template-rows: 50px 1fr;
+    justify-content: center;
+    align-items: center;
+}
